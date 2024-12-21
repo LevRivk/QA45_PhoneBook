@@ -26,7 +26,7 @@ new LoginPage(getDriver()).typeLoginForm(user);
 new ContactsPage(getDriver()).clickBtnAdd();
 addPage = new AddPage(getDriver());
     }
-    @Test
+    @Test(invocationCount = 1)
     public void addNewContactPositiveTest(){
         ContactDtoLombok contact = ContactDtoLombok.builder()
                 .description("description")

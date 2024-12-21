@@ -67,7 +67,7 @@ public class LoginPage extends BasePage{
         alert.accept();
     }
     public boolean validateErrorMessageLogin(String text){
-        pause(5);
+       // pause(5);
         return isElementContainsText(errorMessage,text);
     }
 }

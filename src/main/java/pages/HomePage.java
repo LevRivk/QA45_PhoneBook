@@ -17,7 +17,7 @@ public class HomePage extends BasePage {
     WebElement btnLogin; // = WebElement btnLogin = driver.finsElement(By.xpath(//a[text()='LOGIN']"));
     public void clickBtnLoginHeader(){
         btnLogin.click();
-        pause(3);
+        //pause(3);
     }
 
 }
