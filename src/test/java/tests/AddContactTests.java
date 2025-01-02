@@ -5,12 +5,16 @@ import dto.UserDto;
 import manager.ApplicationManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.AddPage;
 import pages.ContactsPage;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.TestNGListener;
+
+@Listeners(TestNGListener.class)
 
 public class AddContactTests extends ApplicationManager {
 
@@ -27,7 +31,16 @@ new ContactsPage(getDriver()).clickBtnAdd();
 addPage = new AddPage(getDriver());
     }
     @Test(invocationCount = 1)
+
     public void addNewContactPositiveTest(){
+        // для ЛОггера
+        logger.info("addNewContactPositiveTest with data ----> " + ".description" +
+                ".address" +
+                " .email" +
+                ".phone" +
+                " .lastName" +
+                " .name");
+        // для ЛОггера
         ContactDtoLombok contact = ContactDtoLombok.builder()
                 .description("description")
                 .address("adress st.1")
