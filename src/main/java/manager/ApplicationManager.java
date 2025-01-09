@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 public class ApplicationManager {
 
   //  private WebDriver driver;
-    private EventFiringWebDriver driver;
+    private EventFiringWebDriver driver;// оболочка для нашего драйвера расширение
   public Logger logger = LoggerFactory.getLogger(ApplicationManager.class);
 
     public WebDriver getDriver(){
@@ -26,8 +26,8 @@ public class ApplicationManager {
        // logger.info("Start testing --------> "+ method.getName());
        // driver = new ChromeDriver();
         driver = new EventFiringWebDriver(new ChromeDriver());
-        driver.manage().window().maximize();
         driver.register(new WDListener());
+        driver.manage().window().maximize();
 
 
 

@@ -3,6 +3,7 @@ package tests;
 import dto.ContactDtoLombok;
 import dto.UserDto;
 import manager.ApplicationManager;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -12,7 +13,10 @@ import pages.AddPage;
 import pages.ContactsPage;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.TakeScreenShot;
 import utils.TestNGListener;
+import static utils.PropertiesReader.*;
+import static utils.TakeScreenShot.*;
 
 @Listeners(TestNGListener.class)
 
@@ -20,7 +24,10 @@ public class AddContactTests extends ApplicationManager {
 
     SoftAssert softAssert = new SoftAssert();
 
-    UserDto user = new UserDto("qa_mail@mail.com", "Qwerty123!");
+   // UserDto user = new UserDto("qa_mail@mail.com", "Qwerty123!");
+
+    UserDto user = new UserDto(getProperty("login.properties", "email"),
+    getProperty("login.properties","password"));
     AddPage addPage;
 
     @BeforeMethod
@@ -50,6 +57,7 @@ addPage = new AddPage(getDriver());
                 .name("MyName")
                 .build();
         addPage.typeContactForm(contact);
+        takeScreenShot((TakesScreenshot) getDriver());
         Assert.assertTrue(new ContactsPage(getDriver()).validatelastElementContactList(contact));
 
     }
