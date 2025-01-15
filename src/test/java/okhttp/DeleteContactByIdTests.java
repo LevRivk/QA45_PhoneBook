@@ -160,7 +160,7 @@ public class DeleteContactByIdTests  implements BaseApi {
     }
     @Test
     public void deleteContactNotFoundIdNegativeTest() { // все равно падает там другая ошибка но сам тест тип правильный
-        String idContact = "";
+         String idContact = "";
         Request requestGet = new Request.Builder()
                 .url(BASE_URL + ADD_NEW_CONTACT_PATH)
                 .addHeader("Authorization", tokenDto.getToken())
